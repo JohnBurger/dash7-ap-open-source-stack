@@ -4,14 +4,14 @@ permalink: /docs/building/
 ---
 
 
-# Get prerequisites
+## Get prerequisites
 
 - OSS-7 code. The code is hosted on [github](https://github.com/mosaic-lopow/dash7-ap-open-source-stack/), so either fork or clone the repository.
 - [CMake](http://www.cmake.org/) (v2.8.12 or greater) as a flexible build system
 - a GCC-based toolchain matching the target platform, for example [GNU ARM Embedded](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads) for ARM Cortex-M based platforms. By default the build system assumes the GNU ARM Embedded toolchain is located in the PATH environment variable (meaning you can run `arm-none-eabi-gcc` without specifying the full path).
 - [JLinkExe](https://www.segger.com/downloads/jlink) (included in 'J-Link Software and Documentation Pack') if you are using a JLink probe to flash/debug your target
 
-# Run cmake
+## Run cmake
 
 We will create a build directory and run cmake to generate the buildscript:
 
@@ -49,7 +49,7 @@ A quick run-down of what happens:
 * A platform is a combination of one or more chips (MCU or RF) and the wiring between them. Based on the platform a number of chips will be added to the build, in this example the `stm32l0xx` MCU and the `sx127x` RF chip.
 * Applications can be added by setting `-DAPP_<name>=y`. The name of the application is the name of a subdirectory of stack/apps, but uppercased. In this example we enabled the sensor and gateway application.
 
-# Build it!
+## Build it!
 
 If your toolchain is setup correctly you should be able to build the stack and the configured application(s) now. An example of (shortened) output is below:
 
@@ -78,11 +78,11 @@ If your toolchain is setup correctly you should be able to build the stack and t
 
 Note that this builds the chip drivers, the platform, the framework and the DASH7 stack implementation as a static library and links the applications.
 
-# Build options
+## Build options
 
 More build options to for example tweak parameters of the stack or platform specific settings can be configured through cmake. This can be done by passing -D options on the commandline (as above) or using the ccmake interactive console interface or the cmake-gui interface as shown below. The current values of all options can be displayed by executing `cmake -L`.
 
-# Flashing
+## Flashing
 
 cmake will generate targets for flashing each application using JLink, by running `make flash-<appname>`.
 If you are not using a JLink adapter you can of course flash the binary manually. For instance, if you want to
@@ -104,11 +104,11 @@ Otherwise, if you are using JLink just use the make target like this:
 
 If all went well the application should be running on the target.
 
-# Running
+## Running
 
 Please refer to the [running the examples section]({{ site.baseurl }}{% link _docs/running-examples.md %}), but it is advised to read the next section first, which gives [an introduction to DASH7 Alliance Protocol]({{ site.baseurl }}{% link _docs/D7AP-intro.md %}).
 
 
-# MS Windows support
+## MS Windows support
 
 While the above is written for Unix OS's (GNU/Linux and Mac OS X) it works on MS Windows as well. On MS Windows you should install the mingw32 compiler and use the "MinGW32 Makefiles" generator option when running cmake. Finally, you should use the `mingw32-make` command instead of `make`.

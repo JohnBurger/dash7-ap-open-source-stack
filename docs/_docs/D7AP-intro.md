@@ -7,7 +7,7 @@ On this page we give a brief introduction to the DASH7 Alliance Protocol.
 The goal is to provide enough information to understand how the examples work and what the different
 options are to get start with D7AP. For more in depth information see [resources]({{ site.baseurl }}/resources).
 
-# Intro
+## Intro
 
 DASH7 Alliance Protocol (D7AP) originates from ISO 18000-7, which specifies an active RFID standard.
 D7AP extends this by adding a more general asynchronous MAC to enable more flexible communication than standard RFID requester + responder.
@@ -23,7 +23,7 @@ Because of this, D7AP allows to solve a lot of use cases using a star or tree (1
 
 D7AP specifies all layer of the OSI model, making it very easy to implement a use case since a lot of functionality is provided in the stack. As we will later discuss, you can make an application DASH7 enabled by adding a modem module and interfacing with this using common file operations.
 
-# Filesystem
+## Filesystem
 
 Central to D7AP is the notion of a filesystem with structured files. Every node has an obligatory set of files,
 the system files, which are defined by the spec. The system files contain all the configuration and status of the stack itself.
@@ -32,7 +32,7 @@ The application using the D7AP stack interacts with the filesystem of the local 
 Files also have access rights associated to them, meaning that some files require authentication for reading or writing.
 As already mentioned a lot of the behavior of the stack is stored in the system files. Since these files can be adapted remotely (see later), this means that it is possible to change the behavior of an already deployed network.
 
-# Application Layer Protocol (ALP)
+## Application Layer Protocol (ALP)
 
 ALP is a simple binary protocol which allows you to interact with a filesystem and its files. ALP provides operations for common file operations
 like read, write, execute, create. Additionally, ALP also defines operations for queries (arithmetic or string comparison) and boolean logic, allowing you to query the filesystem and, for instance, only execute a read or write when a certain condition is met.
@@ -41,7 +41,7 @@ Besides the local filesystem interface type the spec defines one other interface
 By forwarding ALP commands over this interface they are executed against the network of D7A nodes (as specified by the addressee in the supplied D7ASP configuration, see later). This makes it possible to for example read sensor values of remote nodes or change their configuration, in the same way as you would do for a local file. The query operation can address nodes in a network in a smart way, depending on the content of their files, instead of addressing the nodes one by one. For instance you could query the network for all nodes which have a temperature value > 25 degrees, and all nodes for which this query yields true will respond. Functionally, this behaves as a distributed database running on the nodes, which you can query.
 ALP commands can be executed using an API when running on the same MCU, or using serial communication when using a separate modem MCU for the stack.
 
-# Communication schemes
+## Communication schemes
 
 D7AP enables multiple communication schemes which can be divided in push or pull communication.
 Push communication happens for instance when a sensor pushes data messages to a gateway. The sensor is sending (periodically or based on a trigger) a response to a read file command which in fact never happened. This is also called unsolicited responses and is the simplest scheme.
@@ -58,18 +58,18 @@ For a requester and 2 responders we show if they are in RX or TX state. Both res
 An application can also use a combination of both communication schemes. A third option is defined as well: dormant sessions.
 Dormant sessions are useful when you need to transmit data to a node which is not very urgent. Starting this as a dormant session with a timeout (of for example 6 hours) allows us to wait for a push message of the node we want to reach. When this happens the node is informed that we have a pending session for him and the dialog is extended. In this way we do not need to engage in ad-hoc synchronization, resulting in an even more efficient downlink channel. However, if the node does not push a message before the timeout elapses the ad-hoc synchronization will be started so we can complete to command.
 
-# D7ASP
+## D7ASP
 
 Coming soon
 
-# Access profiles
+## Access profiles
 
 Coming soon
 
-# Physical layer
+## Physical layer
 
 Coming soon
 
-# Examples
+## Examples
 
 Please refer to the [running examples]({{ site.baseurl }}{% link _docs/running-examples.md %}) section to see this in action.

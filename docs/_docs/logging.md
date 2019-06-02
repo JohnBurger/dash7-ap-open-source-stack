@@ -3,7 +3,7 @@ title: Logging
 permalink: /docs/logging/
 ---
 
-# RTT Logging
+## RTT Logging
 
 If you are using a platform which uses JLink then logging will be enabled by default and redirect to the fast RTT interface. This interface makes use of the JLink connection, meaning you do not need extra wires (UART or USB) for logging.
 You can read the logs using `JLinkRTTClient`. This will wait for a JLink connection and print all RTT logs.
@@ -48,7 +48,7 @@ Note that you can enable different log sources separately by using cmake setting
 
 On some platforms (e.g. those based on stm32l0) it seems necessary to reset the node before output starts appearing. You can do this by entering `r` and `g` (reset and go) in the JLink console. 
 
-# RTT logging with multiple targets attached
+## RTT logging with multiple targets attached
 
 The `jlink-open` make target assumes there is only one JLink attached to the host system. If you want to open 2 (or more) JLink connections to view the logging of multiple devices, you will need to open a JLink connection manually.
 This can be done as shown below:
@@ -63,6 +63,6 @@ This way multiple JLink adapters can be used at the same time, each with a diffe
 Note that flashing can done using the JLinkExe prompt as well using the `loadfile` command.
 Refer to the JLink documentation for more info.
 
-# UART logging
+## UART logging
 
 TODO

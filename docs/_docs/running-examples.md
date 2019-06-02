@@ -10,7 +10,7 @@ For the rest of this section we assume you have 2 supported [boards]({{ site.bas
 and you are able to [build]({{ site.baseurl }}{% link _docs/building.md %}) the `gateway`, `sensor_push`, `sensor_action` and `sensor_pull` sample applications.
 Also make sure to check the platform notes specific for your platform (linked from [here]({{ site.baseurl }}{% link _docs/hardware.md %})), for more information on how to attach and configure your platform.
 
-# Push communication
+## Push communication
 
 This example shows the use case of a sensor pushing data to a gateway which is always listening.
 Make sure to flash one board with the `sensor_push` firmware and another one with the `gateway` firmware.
@@ -34,7 +34,7 @@ After installation you can use the `unsolicited_response_logger.py` script to co
 
 The raw sensor data is contained in the `data` field. The other fields contain for instance the sensor node UID, reception level and link budget, channel information etc. For now we are not going to dive into this in more detail, refer to the D7A specification for more info.
 
-# Pull communication
+## Pull communication
 
 In this example the sensor does not push sensor data to gateway(s) continuously, but instead writes the sensor value to a local file,
 which can then be fetched on request. The sensor will sniff the channel every second for background adhoc synchronization frames, to be able to receive requests from other nodes. The gateway will synchronize all nodes in the network using adhoc synchronization frames, after which it will send the query in a foreground frame. For this example we need one node running the `gateway` application and one or more node(s) running `sensor_pull`. For executing the query we will be using the `query_nodes.py` example which is provided by pyd7a.
@@ -57,6 +57,6 @@ Running this script by providing the serial device of the gateway will show some
 
 The script connects to the modem and then executes a query which requests the sensor data file from all nodes. In this case we can see we get multiple response commands on executing our query; 2 nodes are answering before the query completes. The requested data (in this case the first 8 bytes of file-id 64) is displayed (in the data=[] field), together with metadata supplied by the DASH7 interface like the UID or link budget.
 
-# What's next
+## What's next
 
 The examples described above show the push and pull communication schemes. In the future this will be extended to show how to use dormant sessions etc. We will also provide more info on how to configure the DASH7 modem itself, covering aspects like the frequency band, the channel, QoS settings, channel scanning, frequency agility. Furthermore, expect more documentation on how to integrate a DASH7 stack into your own application.

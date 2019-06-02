@@ -3,13 +3,13 @@ title: IDE and debugging
 permalink: /docs/ide-support/
 ---
 
-# IDE
+## IDE
 
 The OSS-7 buildsystem and code does not require a specific IDE. The user can choose which IDE to use, if any.
 CMake supports generating project files for Eclipse CDT, CodeBlocks etc, instead of plain makefiles using the -G option.
 Alternatively you can use an IDE which natively uses cmake projects like Qt Creator or JetBrain's CLion.
 
-# Debugging
+## Debugging
 
 For debugging most toolchains come with a GDB client which you can attach to a GDB server which is compatible with your programmer.
 For instance ARM Cortex-M platforms can use Segger's JLink programmers which comes with JLinkGDBServer. The arm-gcc-embedded toolchain

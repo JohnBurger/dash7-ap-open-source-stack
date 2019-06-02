@@ -3,13 +3,13 @@ title: Filesystem
 permalink: /docs/filesystem/
 ---
 
-# Intro
+## Intro
 
 D7AP [specifies](http://www.dash7-alliance.org/specification/) a structured filesystem containing a set of obligatory system files and optional user files. The system files contain all the configuration and status of the stack itself.
 The user files, which are not defined by the spec, can be used for example for your specific sensor data.
 The application using the D7AP stack interacts with the filesystem of the local node and with the filesystem of remote nodes, transparently. A file in the D7AP filesystem has associated properties like storage class (e.g. volatile, permanent) and permissions.
 
-# Implementation
+## Implementation
 
 The D7AP filesystem implementation in OSS-7 can be found in (`stack/modules/d7ap/d7ap_fs.c`). For storing the system files it depends on a `blockdevice_t` which is an abstraction used to read and write blocks of memory. At the moment there are 2 concrete implementations of the blockdevice API: `blockdevice_driver_stm32_eeprom` which uses the embedded EEPROM of the STM32L MCU, and `blockdevice_driver_ram` which uses a buffer in RAM (and hence is volatile).
 
@@ -24,7 +24,7 @@ For this we use [pyd7a](https://github.com/MOSAIC-LoPoW/pyd7a), which provides a
 
 The value of the systemfiles in `d7ap_fs_data.c` is provided as a default. If you want to override it for your application you can do it out-of-tree to keep the source in sync with upstream. To do so, set the `MODULE_D7AP_USE_DEFAULT_SYSTEMFILES` cmake variable to `false` and define `fs_systemfiles` and `fs_systemfiles_file_offsets` in your application code (which can be [out-of-tree]({{ site.baseurl }}{% link _docs/out-of-tree.md %})). The easiest way is to copy `d7ap_fs_data.c` to your application directory, strip everything besides the `fs_systemfiles` and `fs_systemfiles_file_offsets` definitions, adapt file contents where needed and add it to the `APP_BUILD` sources in the app's CMakeLists.txt.
 
-# Future work
+## Future work
 
 - Allow to store user files in non volatile memory
 - Enable RAM caching of some files which change frequently, with periodic flushing to permanent memory
