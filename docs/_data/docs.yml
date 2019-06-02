@@ -10,7 +10,7 @@
   docs:
   - logging
   - tools
-  - ide-support
+#  - ide-support # Content already included in tools
   - api-docs
   - porting
   - out-of-tree
