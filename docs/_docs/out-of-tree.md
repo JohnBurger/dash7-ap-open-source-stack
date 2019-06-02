@@ -3,7 +3,7 @@ title: Out-of-tree modules
 permalink: /docs/out-of-tree/
 ---
 
-The OSS-7 buildsystem allows to compile modules which are not located in the main source tree. This can be useful if this part contains private IP or if this makes no sense to open source it. The system allows this for:
+The OSS-7 buildsystem can compile modules which are not located in the main source tree. This can be useful if this part contains private IP or if this makes no sense to open source it. The system allows this for:
 - platforms
 - chips
 - applications

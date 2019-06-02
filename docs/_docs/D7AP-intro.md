@@ -34,16 +34,16 @@ As already mentioned a lot of the behavior of the stack is stored in the system 
 
 # Application Layer Protocol (ALP)
 
-ALP is a simple binary protocol which allows you to interact with a filesystem and it's files. ALP provides operations for common file operations
+ALP is a simple binary protocol which allows you to interact with a filesystem and its files. ALP provides operations for common file operations
 like read, write, execute, create. Additionally, ALP also defines operations for queries (arithmetic or string comparison) and boolean logic, allowing you to query the filesystem and, for instance, only execute a read or write when a certain condition is met.
 Another important concept of ALP is the interface. By default ALP assumes you are using the local filesystem interface, but it can be any transport mechanism like serial, NFC, ... ALP commands can be forwarded to an interface, by providing the interface to use and the (interface specific) configuration.
 Besides the local filesystem interface type the spec defines one other interface: the D7A Session Protocol (D7ASP) interface (see later).
-By forwarding ALP commands over this interface they are executed against the network of D7A nodes (as specified by the addressee in the supplied D7ASP configuration, see later). This makes it possible to for example read sensor values of remote nodes or change their configuration, in the same way as you would do for a local file. The query operation enables to address nodes in a network in a smart way, depending on the content of their files, instead of addressing the nodes one by one. For instance you could query the network for all nodes which have a temperature value > 25 degrees, and all nodes for which this query yields true will respond. Funtionally, this behaves as a distributed database running on the nodes, which you can query.
-ALP commands can be executed using an API when running on the same MCU, or using serial communication when using a separate modem MCU for the stack).
+By forwarding ALP commands over this interface they are executed against the network of D7A nodes (as specified by the addressee in the supplied D7ASP configuration, see later). This makes it possible to for example read sensor values of remote nodes or change their configuration, in the same way as you would do for a local file. The query operation can address nodes in a network in a smart way, depending on the content of their files, instead of addressing the nodes one by one. For instance you could query the network for all nodes which have a temperature value > 25 degrees, and all nodes for which this query yields true will respond. Functionally, this behaves as a distributed database running on the nodes, which you can query.
+ALP commands can be executed using an API when running on the same MCU, or using serial communication when using a separate modem MCU for the stack.
 
 # Communication schemes
 
-D7AP enables multiple communication schemes which we can divide in push or pull communication.
+D7AP enables multiple communication schemes which can be divided in push or pull communication.
 Push communication happens for instance when a sensor pushes data messages to a gateway. The sensor is sending (periodically or based on a trigger) a response to a read file command which in fact never happened. This is also called unsolicited responses and is the simplest scheme.
 DASH7 makes it very simple to use this scheme by defining action files which are configured to be executed when a read or write operation on a file occurs.
 For example, a sensor file can be configured that, when written to it, an action is triggered which results in pushing the sensor data.

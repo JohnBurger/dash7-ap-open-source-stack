@@ -6,7 +6,7 @@ permalink: /docs/supported-hardware/
 # Platforms
 
 ## Overview
-A goal of OSS-7 is to support different hardware platforms and radio's.
+A goal of OSS-7 is to support different hardware platforms and radios.
 The stack provides this portability by using portable C code for the higher layers, and providing a pluggable driver system for hardware specific implementations.
 As explained in the [architecture section]({{ site.baseurl }}{% link _docs/architecture.md %}), OSS-7 has the concept of chips and platforms inside the hardware abstraction layer.
 A chip implementation contains drivers for MCU peripherals or radio chips. A platform is a combination of a set of chips (for example an MCU and a radio chip), and describes the board wiring and features like LEDs or buttons. You can think of a platform as a specific board.
@@ -37,9 +37,9 @@ The [B_L072Z_LRWAN1](http://www.st.com/content/st_com/en/products/evaluation-too
 ## MURATA_ABZ
 
 The [Murata Type ABZ](https://wireless.murata.com/eng/products/rf-modules-1/lpwa/type-abz.html)
- which contains a STM32L072CZ MCU and a Semtech sx1276 RF chip together on a stand-alone module. This platform is very similar to B_L072Z_LRWAN1 except that it only contains what is needed for Murata based designs.
+ contains a STM32L072CZ MCU and a Semtech sx1276 RF chip together on a stand-alone module. This platform is very similar to B_L072Z_LRWAN1 except that it only contains what is needed for Murata-based designs.
  Compared to B_L072Z_LRWAN1 this platform does not include LED and button definitions.
-This module is interesting because it allows to easily integrate a DASH7 modem on a custom design. Note that this module only supports the 868 and 915 MHz bands, not the 433 MHz band.
+This module is interesting because it allows you to easily integrate a DASH7 modem on a custom design. Note that this module only supports the 868 and 915 MHz bands, not the 433 MHz band.
 
 
 ## NUCLEO_L073RZ

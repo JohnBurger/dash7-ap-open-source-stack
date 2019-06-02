@@ -29,4 +29,4 @@ The DASH7 Alliance protocol is implemented as a module. Different modules can co
 For better clarity, the D7A module maintains a clear separation between the ISO layers.
 
 ## Application
-The OSS-7 code comes with a set a sample applications. Only one application is running along with the system. The application can be selected in the build system through cmake.
+The OSS-7 code comes with a set of sample applications. Only one application is running along with the system. The application can be selected in the build system through cmake.
